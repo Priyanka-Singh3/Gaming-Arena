@@ -1,0 +1,126 @@
+@import "tailwindcss";
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+/* Custom Snake Game Styles */
+.head {
+    background: radial-gradient(circle at 60% 40%, #fff 60%, #38bdf8 100%);
+    border: 3px solid #164e63;
+    box-shadow: 0 0 16px 4px #38bdf8, 0 2px 8px 0 rgba(56,189,248,0.3);
+    border-radius: 50%;
+    animation: head-glow 1.2s infinite alternate;
+}
+@keyframes head-glow {
+    0% { box-shadow: 0 0 8px 2px #38bdf8, 0 2px 8px 0 rgba(56,189,248,0.3); }
+    100% { box-shadow: 0 0 24px 8px #38bdf8, 0 2px 8px 0 rgba(56,189,248,0.3); }
+}
+.snake {
+    background: linear-gradient(135deg, #f59e42 0%, #38bdf8 100%);
+    border-radius: 12px;
+    border: 2px solid #0e2a36;
+    box-shadow: 0 1px 4px 0 rgba(56,189,248,0.15);
+    opacity: 0.95;
+}
+.snake:nth-child(even) {
+    background: linear-gradient(135deg, #38bdf8 0%, #f59e42 100%);
+    opacity: 0.85;
+}
+.food {
+    background: radial-gradient(circle at 60% 40%, #facc15 60%, #f59e42 100%);
+    border-radius: 100%;
+    box-shadow: 0 0 16px 4px #facc15, 0 2px 8px 0 rgba(250,204,21,0.3);
+    border: 2px solid #f59e42;
+}
+.bonus {
+    background: radial-gradient(circle at 60% 40%, #a21caf 60%, #f472b6 100%);
+    border-radius: 50%;
+    border: 3px solid #a21caf;
+    box-shadow: 0 0 24px 8px #a21caf99, 0 2px 8px 0 #f472b6aa;
+    width: 90%;
+    height: 90%;
+    animation: bonus-pulse 1s infinite alternate;
+    z-index: 2;
+}
+@keyframes bonus-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 16px 4px #a21caf99; }
+    100% { transform: scale(1.2); box-shadow: 0 0 32px 12px #f472b6cc; }
+}
+/* Enhanced slider styles */
+.dark-slider {
+    height: 2.2rem;
+}
+.dark-slider::-webkit-slider-thumb {
+    background: linear-gradient(135deg, #38bdf8 0%, #164e63 100%);
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px #38bdf8, 0 0 0 4px #164e6333;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: box-shadow 0.2s, border 0.2s;
+}
+.dark-slider:focus::-webkit-slider-thumb,
+.dark-slider:hover::-webkit-slider-thumb {
+    box-shadow: 0 0 16px 8px #38bdf8, 0 0 0 4px #164e6355;
+    border: 3px solid #38bdf8;
+}
+.dark-slider::-webkit-slider-runnable-track {
+    background: linear-gradient(90deg, #e0e7ef 0%, #38bdf8 100%);
+    height: 10px;
+    border-radius: 8px;
+}
+.dark-slider::-moz-range-thumb {
+    background: linear-gradient(135deg, #38bdf8 0%, #164e63 100%);
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px #38bdf8, 0 0 0 4px #164e6333;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: box-shadow 0.2s, border 0.2s;
+}
+.dark-slider:focus::-moz-range-thumb,
+.dark-slider:hover::-moz-range-thumb {
+    box-shadow: 0 0 16px 8px #38bdf8, 0 0 0 4px #164e6355;
+    border: 3px solid #38bdf8;
+}
+.dark-slider::-moz-range-track {
+    background: linear-gradient(90deg, #e0e7ef 0%, #38bdf8 100%);
+    height: 10px;
+    border-radius: 8px;
+}
+.dark-slider::-ms-thumb {
+    background: linear-gradient(135deg, #38bdf8 0%, #164e63 100%);
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px #38bdf8, 0 0 0 4px #164e6333;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: box-shadow 0.2s, border 0.2s;
+}
+.dark-slider:focus::-ms-thumb,
+.dark-slider:hover::-ms-thumb {
+    box-shadow: 0 0 16px 8px #38bdf8, 0 0 0 4px #164e6355;
+    border: 3px solid #38bdf8;
+}
+.dark-slider::-ms-fill-lower {
+    background: #e0e7ef;
+}
+.dark-slider::-ms-fill-upper {
+    background: #38bdf8;
+}
+.dark-slider:focus {
+    outline: none;
+}
+.bg-snake-custom {
+  background-image: url('/snake_.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+html, body {
+  height: 100%;
+  /* overflow: hidden; */
+}
