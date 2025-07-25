@@ -1,1 +1,19 @@
-node_modules
+# Node modules
+node_modules/
+gaming-arena/node_modules/
+server/node_modules/
+
+# Build output
+dist/
+gaming-arena/dist/
+server/dist/
+
+# Environment files
+.env
+.env.local
+
+# System files
+.DS_Store
+
+# Legacy/unused
+js/
