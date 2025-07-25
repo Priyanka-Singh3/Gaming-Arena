@@ -11,7 +11,11 @@ const handImages = {
   Scissors: scissor,
 };
 
-const socket = io("ws://localhost:4000");
+// const socket = io("https://gaming-arena-0ont.onrender.com");
+const socket = io(import.meta.env.VITE_SOCKET_URL, {
+  transports: ["websocket"],
+  withCredentials: true
+});
 
 export default function RockPaperScissors() {
   const [room, setRoom] = useState("");

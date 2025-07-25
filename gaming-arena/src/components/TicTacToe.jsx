@@ -3,7 +3,11 @@ import { io } from "socket.io-client";
 
 const emptyBoard = Array(9).fill(null);
 
-const socket = io("ws://localhost:4000");
+// const socket = io("https://gaming-arena-0ont.onrender.com");
+const socket = io(import.meta.env.VITE_SOCKET_URL, {
+  transports: ["websocket"],
+  withCredentials: true
+});
 // Store socket id for symbol assignment after rematch
 const getSocketId = () => socket.id;
 
@@ -34,8 +38,10 @@ export default function TicTacToe() {
         // Assign symbol based on position in playerList
         const idx = numOrList.indexOf(getSocketId());
         setSymbol(idx === 0 ? "X" : idx === 1 ? "O" : null);
+        console.log('[TicTacToe] ttt-players event:', numOrList, 'players:', numOrList.length, 'my socket:', getSocketId());
       } else {
         setPlayers(numOrList);
+        console.log('[TicTacToe] ttt-players event (number):', numOrList);
       }
     });
     socket.on("ttt-roomFull", () => {
@@ -54,6 +60,7 @@ export default function TicTacToe() {
       setLine([]);
       setIsDraw(false);
       setJoined(true);
+      console.log('[TicTacToe] ttt-init event received.');
     });
     socket.on("ttt-update", ({ board, xIsNext, winner, line, isDraw, gameActive }) => {
       setBoard([...board]);
@@ -74,6 +81,10 @@ export default function TicTacToe() {
       socket.off("ttt-rematch-offer");
     };
   }, []);
+
+  useEffect(() => {
+    console.log('[TicTacToe] players state updated:', players, 'playerList:', playerList);
+  }, [players, playerList]);
 
   function handleJoinRoom(e) {
     e.preventDefault();
